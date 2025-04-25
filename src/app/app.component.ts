@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';  // Assurez-vous d'importer RouterModule
+import { LoginComponent } from './auth/login/login.component';
+import { MonthlyPayListComponent } from './monthly-pay/monthly-pay-list/monthly-pay-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [
+    RouterModule,  // Ajoutez RouterModule ici pour utiliser les routes
+    LoginComponent,
+    MonthlyPayListComponent
+  ],
+  template: `
+    <router-outlet></router-outlet>  <!-- Affichez les composants selon la route active -->
+  `,
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'jqwidgets-project';
-}
+export class AppComponent {}

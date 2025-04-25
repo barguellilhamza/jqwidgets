@@ -1,0 +1,15 @@
+<jqxGrid #myGrid
+    [width]="'100%'"
+    [source]="dataAdapter" 
+    [filterable]="true"
+    [showeverpresentrow]="true" 
+    [everpresentrowposition]="'bottom'"
+    [editable]="true"  [columns]="columns" 
+    [selectionmode]="'singlerow'"
+    [showtoolbar]="true" [rendertoolbar]="rendertoolbar"
+    (onCellendedit)="cellEndEditEvent($event)">
+</jqxGrid>
+<!--<jqxButton (onClick)="addRowToGrid()" style="margin-top: 20px;">
+    Ajouter une ligne
+</jqxButton>-->
+<div #endEdit style="margin-top: 10px;"></div>

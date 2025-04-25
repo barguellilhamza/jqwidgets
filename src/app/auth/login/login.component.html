@@ -1,0 +1,63 @@
+<div class="login-container">
+  <h2>Connexion</h2>
+
+  <!-- Formulaire réactif -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <!-- Champ pour le nom d'utilisateur -->
+    <div class="form-group">
+      <label class="center-block" for="username">Nom d'utilisateur:</label>
+      <input
+        id="username"
+        type="text"
+        formControlName="username"
+        class="form-control"
+        [ngClass]="{'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched}"
+        placeholder="Entrez votre nom d'utilisateur"
+      />
+      
+      <!-- Affichage des erreurs -->
+      <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="invalid-feedback">
+        <ul>
+          <li *ngIf="loginForm.get('username')?.errors?.['required']">
+            Le nom d'utilisateur est requis.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Champ pour le mot de passe -->
+    <div class="form-group">
+      <label class="center-block" for="password">Mot de passe:</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        class="form-control"
+        [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+        placeholder="Entrez votre mot de passe"
+      />
+      
+      <!-- Affichage des erreurs -->
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
+        <ul>
+          <li *ngIf="loginForm.get('password')?.errors?.['required']">
+            Le mot de passe est requis.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bouton de connexion -->
+    <div class="form-group">
+      <button 
+        type="submit" 
+        class="btn btn-primary w-100" 
+        [disabled]="loginForm.invalid"
+      >
+        Se connecter
+      </button>
+    </div>
+    
+  </form>
+</div>
